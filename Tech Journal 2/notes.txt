@@ -1,1 +1,12 @@
+WKS01 should be able to ping champlain.edu via the default gateway(fw01) at 10.0.5.2..
 
+Find and edit the virtual machine properties for ad01.  Adjust the network adapter as so:
+  -net adapter 1 == the sys255 lan-yourname
+ 
+ 
+ 
+ 
+ Find and edit the virtual machine properties for ad01.  Adjust the network adapter as so:
+ 
+ 
+ 
