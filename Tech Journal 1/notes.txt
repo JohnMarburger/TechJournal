@@ -69,3 +69,5 @@ RFC1918 Networks:  Uncheck "Block private networks from entering via WAN"
 System Wizard:  Set Root Password, its Up to you.  If you set it you need to remember it.
 
 I will be looking into automating some steps via powershell later this week
+
+so the firewall lets us backup to a xml config file, which can be saved via using cat in powershell and copy and pasting it into a file, or just emailing the file to yourself.  The config backup will be tested in my freetime, multiple times to ensure stability and so as to learn how to rapidly deploy.
