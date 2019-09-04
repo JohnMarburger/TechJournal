@@ -1,12 +1,34 @@
 WKS01 should be able to ping champlain.edu via the default gateway(fw01) at 10.0.5.2..
 
 Find and edit the virtual machine properties for ad01.  Adjust the network adapter as so:
-  -net adapter 1 == the sys255 lan-yourname
- 
- 
- 
+  -net adapter 1 == the sys255 lan-yourname 
  
  Find and edit the virtual machine properties for ad01.  Adjust the network adapter as so:
- 
- 
- 
+ adapter 1 is the sys255 lan first.last name 
+Product Key -> Do this later
+Administrator Password(P@ssw0rd)
+
+If it is not already running, Find and invoke server manager from the start menu
+
+Set the following: (on the local server)
+IP Address:  10.0.5.5
+Netmask: 255.255.255.0
+Gateway 10.0.5.2 (Make sure fw01 is running).
+DNS 10.0.5.2
+Discoverable option.  If this dialog shows up, select Yes for those systems on your LAN.
+Time should be set to UTC-5:00 Eastern Time (US & Canada)
+Computer name:  ad01-yourname (make sure you get this right). 
+
+reboot
+
+ping google.com to ensure its still connected
+
+Open Server Manager.  From the Manage menu, Select Add Roles and Features
+Select Active Directory Domain Services->Add Features.  Pick Active Directory Domain Services:
+Choose the restart destination server option and select yes on the confirmation dialog.  
+After installation, we need to configure our server to be the primary domain controller for our domain (yourname.local)
+
+We are going to create a new forest.  Name this forest yourname.local, where yourname is your first name.
+Enter the DSRM password(P@ssw0rd).  This password is used to recover the directory in case of error.  You would use it in production if things went terribly wrong.
+
+Installation will take a few minutes and a reboot.  When you log back in, you will be logging in as the Domain Administrator as opposed to the local Administrator.
