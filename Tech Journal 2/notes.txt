@@ -32,3 +32,18 @@ We are going to create a new forest.  Name this forest yourname.local, where you
 Enter the DSRM password(P@ssw0rd).  This password is used to recover the directory in case of error.  You would use it in production if things went terribly wrong.
 
 Installation will take a few minutes and a reboot.  When you log back in, you will be logging in as the Domain Administrator as opposed to the local Administrator.
+
+Adding a DNS Record
+    --Find and invoke DNS Manager from the Server Manager/DNS/AD01 context menu
+    --Find and expand the forward lookup zone for your new domain
+    --You should have an entry for ad01.yourname.  This allows you to ping ad01 by hostname and/or domain name.  We are going to add an entry for fw01 
+        --From the DNS Manager, select New Host (A or AAAA name):
+        --Add a reference to fw01-john, go ahead and check "Create associated (PTR) record"\
+ When your host is added, the capability to resolve a host by its hostname is enabled.  The reverse is not true.  We cannot get a hostname by IP address until we create a reverse lookup zone.
+
+Add a reverse primary lookup for all IP addresses in the 10.0.5.0/24 Network by selecting the New Zone options from the right-click context menu as shown below.  Use the defaults and add a Network ID for 10.0.5.
+
+
+Create a new PTR records from the A record of fw01-yourname and ad01-yourname by unchecking, applying checking the update PTR record check box and re-applying fw01's properties.
+    
+The reverse dns entry for fw01 and ad01 should now be in the 5.0.10 reverse lookup zone.  You may need to refresh the view:
