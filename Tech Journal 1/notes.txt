@@ -1,0 +1,71 @@
+I went to https://vcenter01.cyber.local/
+then logged in using the cyber domain credentials
+
+Network Assignments Link
+URL for vSphere:  https://vcenter01.cyber.local
+URL for Remote Access https://viewportal.champlain.edu
+
+The OpnSense firewall will provides routing services between a Local Area Network and Wide Area Network in your VSphere environment.
+
+modify the settings of your fw01 VM and make sure that the first network adapter is assigned to WAN and the second 
+assigned to the LAN-yourname network as shown in the following figure.
+(THis is done by clicking "action" and "edit settings" and then going to the networking section.  Network adapter 1 is already assigned to WAN so we just need to fix the 2nd adapter
+clicked "browse" and selected my cyber name from the list)
+
+
+Power on your fw01 VM and Open a VM Console
+	--hit the summary tab of the vsphere client and under the image of the vm their is a tab called "launch web console"
+	--the default login is root as the username and Ch@mpl@1n!19 is the password
+	
+Select 1 to  reassign Interfaces and follow the following steps
+	-hit no to configure VLAn's now
+	-The WAN interface name should be changed to em0
+	-The LAN interface name should be changed to em1
+	-When prompted for an optional interface, just select <ENTER>
+	-If successful, your interfaces should look like this:
+		WAN -> em0
+		LAN -> em1
+
+Step 2 Set interface IP address
+	-enter 2 to set the interface IP address
+	-Do not use DHCP to configure the WAN IPv4 address, use 10.0.17.141
+	-enter 24 cuz your on a /24 mask
+	-For the WAN, my upstream gateway is 10.0.17.2
+	-Use the gateway as IPv4 name server
+	-not using ipv6 so skip that section
+	-When asked about HTTP for the GUI, say no cuz security 
+
+Select 2 again to configure the other Interface's IP Address
+	-this time enter 1 to edit the LAN inteface
+	-Not using DHCP
+	-IP address is 10.0.5.2
+	-use a 24 bit mask
+	-do not have an upstream LAN gateway as you are the gateway
+	-No DHCP
+	-bypass IPV6 config by hitting enter
+	-dont enable a LAN DHCP server and dont revert to HTTP
+
+
+Windows 10 - wks01
+Figure out how to adjust wks01's VMWare Network Configuration such that it is on your LAN segment (see below)
+	- go edit the network settings, browse and select your name @ local
+	-open up a console just like you did above
+	-edit network setting to be the following
+
+	IP = 10.0.5.100
+	mask = 255.255.255.0
+	gateway = 10.0.5.2
+change hostname to wks01-john
+go to sytem change name and enter the desired hostname
+
+go to https://10.0.5.2  inside the vm
+
+The following are screens where you need to change the default.
+System Wizard: General Information
+Hostname: fw1-yourname
+Domain: yourname.local
+System Wizard:  Configure WAN Interface
+RFC1918 Networks:  Uncheck "Block private networks from entering via WAN"
+System Wizard:  Set Root Password, its Up to you.  If you set it you need to remember it.
+
+I will be looking into automating some steps via powershell later this week
