@@ -60,3 +60,11 @@ Create a non-privileged account (Skip the addition to Domain Admins) for user fi
 From this point forward you will login using your first.lastname or first.lastname-adm account depending on the privileges you need.
 
 Set wks01's DNS to 10.0.5.5 (ad01's address)
+
+ping john.local
+
+Joining WKS01 to your new domain
+If you haven't changed the hostname from the random assigned hostname, do so now.  Call it wks01-yourname
+
+Restart wks01
+
