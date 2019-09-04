@@ -47,3 +47,16 @@ Add a reverse primary lookup for all IP addresses in the 10.0.5.0/24 Network by 
 Create a new PTR records from the A record of fw01-yourname and ad01-yourname by unchecking, applying checking the update PTR record check box and re-applying fw01's properties.
     
 The reverse dns entry for fw01 and ad01 should now be in the 5.0.10 reverse lookup zone.  You may need to refresh the view:
+
+create a named domain administrator account as well as a named non-privileged user account
+On AD01, find the Active Directory Users and Computers option
+Under the Domain's user folder Add a new User
+This user (first.lastname-adm) will be a Domain Administrator and will have a distinct suffix (ADM) to show this.
+Uncheck user must change password at next login.
+Add this user to the Domain Admins Group
+
+
+Create a non-privileged account (Skip the addition to Domain Admins) for user first.lastname
+From this point forward you will login using your first.lastname or first.lastname-adm account depending on the privileges you need.
+
+Set wks01's DNS to 10.0.5.5 (ad01's address)
