@@ -1,0 +1,17 @@
+open dchp01
+nmtui -enter this and config the following
+IP Address and Netmask 10.0.5.3/24
+Gateway10.0.5.2
+DNS 10.0.5.5
+Search Domain yourname.local
+Hostname dhcp01-yourname
+
+add a new privlaged user by :
+	adduser admin
+	usermod -aG root admin
+https://linuxize.com/post/how-to-create-a-sudo-user-on-ubuntu/
+
+use the following command for the first deliverable:
+	"ping google.com -c 1 && ping 10.0.5.2 -c 1 && ping 10.0.5.5 -c 1"
+
+add an A and PTR record for dhcp01 to the DNS configuration on ad01.  Test this by issuing a ping from wks01 to dhcp01 using the undistinguished hostname.
