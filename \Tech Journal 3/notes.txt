@@ -15,3 +15,15 @@ use the following command for the first deliverable:
 	"ping google.com -c 1 && ping 10.0.5.2 -c 1 && ping 10.0.5.5 -c 1"
 
 add an A and PTR record for dhcp01 to the DNS configuration on ad01.  Test this by issuing a ping from wks01 to dhcp01 using the undistinguished hostname.
+
+use the following(this is copy pasted from journal week 2) and modify with the correct values
+	Adding a DNS Record
+    --Find and invoke DNS Manager from the Server Manager/DNS/AD01 context menu
+    --Find and expand the forward lookup zone for your new domain
+    --You should have an entry for ad01.yourname.  This allows you to ping ad01 by hostname and/or domain name.  We are going to add an 		entry for fw01 
+    --From the DNS Manager, select New Host (A or AAAA name):
+    --Add a reference to fw01-john, go ahead and check "Create associated (PTR) record"\
+
+
+everything else like creating directories(mkdir directoryname) and moving around and copying is super easy....also we have man pages so
+im not going to put that all in here
