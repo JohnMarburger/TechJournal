@@ -1,0 +1,9 @@
+log into the ad01 vm, and ssh into the dhcp01 box using powershell
+
+install dhcp by using
+"sudo yum install dhcp" and agree to everything
+then do the following:
+```sudo -i
+   nano /etc/dhcp/dhcp.conf
+ ```
+ then insert the stuff 
