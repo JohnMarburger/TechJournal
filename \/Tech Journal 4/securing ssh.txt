@@ -1,0 +1,7 @@
+Using your friends at google, figure out how to disable SSH root user access to dhcp01
+(Hint: this should involve a small edit to a single file). 
+Prove you have done this correctly by conducting a test via PuTTY.
+  -nano /etc/ssh/sshd_config
+  -edit #PermitRootLogin yes to PermitRootLogin no
+
+https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
