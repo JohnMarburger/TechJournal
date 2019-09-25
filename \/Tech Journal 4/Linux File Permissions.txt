@@ -1,0 +1,28 @@
+Create a new user called fred and two new groups called marketing and management
+  -useradd fred
+  -groupadd marketing
+  -groupadd management
+
+Bob and Fred should be in the Marketing Group
+  -usermod -a -G marketing bob
+  -usermod -a -G marketing fred(note: the syntax is as follows for adding a user to a group: usermod-a examplegroup exampleusername)
+Alice should be in the management group
+  -usermod -a -G management alice
+
+
+Create directories /marketing and /management
+  -mkdir marketing
+  -mkdir management
+
+Solve the following file access control issues.
+1.  Only the marketing group should have access to a file you create called /marketing/newproducts.txt
+2.  Bob and fred should be able to both see newproducts.txt but only Fred should be able to modify the file.
+3.  Alice is the manager.  The new file, /management/bobreview.txt should only be accessible to Alice and the management group
+  -touch /marketing/newproducts.txt
+  -setfacl -m u:fred:rw newproducts.txt(setfacl -m u:username:rwx myfolder)
+  -setfacl -m u:bob:rw newproducts.txt
+  -cd ..
+  -cd /management
+  -touch bobreview.txt
+  -setfacl -m g:management:rw bobreview.txt (credit to https://askubuntu.com/questions/487527/give-specific-user-permission-to-write-to-a-folder-using-w-notation for this)
+  
