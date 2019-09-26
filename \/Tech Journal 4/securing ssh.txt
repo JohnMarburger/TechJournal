@@ -3,5 +3,6 @@ Using your friends at google, figure out how to disable SSH root user access to 
 Prove you have done this correctly by conducting a test via PuTTY.
   -nano /etc/ssh/sshd_config
   -edit #PermitRootLogin yes to PermitRootLogin no
-
+  -on ad01 use ssh root@10.0.5.3 to test this
+  -cat /var/log/secure | grep "not met" (this checks for denied logins to root)
 https://mediatemple.net/community/products/dv/204643810/how-do-i-disable-ssh-login-for-the-root-user
